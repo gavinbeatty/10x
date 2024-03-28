@@ -2322,7 +2322,7 @@ def HandleCommandModeKey(key, shift, control, alt):
 
     pass_through = False
 
-    if key == "Escape":
+    if key == "Escape" or (key == "[" and control):
         EnterCommandMode()
 
     elif g_PaneSwap:
@@ -2460,7 +2460,7 @@ def HandleInsertModeKey(key, shift, control, alt):
     global g_InsertBuffer
     global g_PerformingDot
 
-    if key == "Escape" and not N10X.Editor.IsShowingAutocomplete():
+    if (key == "Escape" or (key == "[" and control)) and not N10X.Editor.IsShowingAutocomplete():
         EnterCommandMode()
         return False
 
